@@ -1,0 +1,200 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;500;700;900&display=swap');
+
+/* Layout */
+:root {
+    --primary: #44bb88;
+    --error: #ff4444;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+body {
+    background: #f3f3f3;
+    margin: 0;
+    font-family: "Rubik", sans-serif;
+}
+
+header {
+    background: black;
+}
+
+header .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header a {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #f3f3f3;
+    font-style: italic;
+    text-decoration: none;
+}
+header a:hover {
+    color: var(--primary);
+    font-style: italic;
+    text-decoration: none;
+}
+
+.Pages {
+    max-width: 1400px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+/* Homepage */
+
+.tracker-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 5px;
+}
+
+.trackers {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 60%;
+}
+
+.trackers-form {
+    width: 30%;
+}
+
+/* Tracker Details */
+.tracker-details {
+    background: #fff;
+    border-radius: 4px;
+    margin: 20px auto;
+    padding: 50px;
+    position: relative;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    border: 1px solid #333;
+}
+.tracker-details h4 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    color: var(--primary);
+}
+
+.tracker-details p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+p.tracker-id  {
+    color: #ff2147;
+}
+
+.tracker-modify {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+span.edit {
+    background: var(--primary);
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 50%;
+    color: #fff
+}
+span.delete {
+    background: var(--error);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+
+/* Tracker Form */
+label, input, select {
+    display: block;
+}
+
+input,
+select {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    border: 1px solid #333;
+    border-radius: 4px;
+    box-sizing: border-box
+}
+
+form button {
+    background: var(--primary);
+    border: 0;
+    color: #fff;
+    padding: 10px;
+    font-family: "Rubik", sans-serif;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+div.error {
+    padding: 10px;
+    background: #ffefef;
+    border: 1px solid var(--error);
+    color: var(--error);
+    border-radius: 4px;
+    margin: 20px 0;
+}
+input.error {
+    border: 1px solid var(--error);
+}
+
+/* Tracker Table */
+.table-title {
+    font-size: 1.5rem;
+}
+table {
+    width: 100%;
+    text-align: center;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+td, th {
+    padding: 10px;
+}
+tr:nth-child(odd) td {
+    background-color: #f1f1f1;
+}
+tr:nth-child(even) td {
+    background-color: #e1e1e1;
+}
+
+.table-tracker-id {
+    background: black;
+    text-align: left;
+}
+
+/**
+ * Footer
+ */
+
+footer {
+    margin: 10px 0;
+    text-align: center;
+}
+footer p {
+    margin-top: 50px;
+}
+.credits {
+    display: block;
+    margin: 10px 0;
+}

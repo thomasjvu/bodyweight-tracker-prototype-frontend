@@ -10,7 +10,7 @@ const TrackerDetails = ({tracker}) => {
 
     // Delete Button
     const handleClick = async () => {
-        const response = await fetch('http://localhost:3005/api/trackers/' + tracker._id, {
+        const response = await fetch(process.env.REACT_APP_TRACKER_API_URL + tracker._id, {
             method: 'DELETE'
         })
         const json = await response.json()
@@ -22,7 +22,7 @@ const TrackerDetails = ({tracker}) => {
 
     // Update Button
     const handleUpdate = async () => {
-        const response = await fetch('http://localhost:3005/api/trackers/' + tracker._id, {
+        const response = await fetch(process.env.REACT_APP_TRACKER_API_URL + tracker._id, {
             method: 'PATCH'
         })
         const json = await response.json()

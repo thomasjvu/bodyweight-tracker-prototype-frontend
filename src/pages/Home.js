@@ -5,8 +5,6 @@ import { useTrackersContext } from '../hooks/useTrackersContext'
 import TrackerDetails from '../components/TrackerDetails'
 import TrackerForm from '../components/TrackerForm'
 import TrackersTable from '../components/TrackersTable'
-// import TrackersChart from '../components/TrackersChart'
-// import Chart from '../components/Chart'
 import Footer from '../components/Footer'
 
 const Home = () => {
@@ -15,7 +13,7 @@ const Home = () => {
     useEffect(() => {
 
         const fetchTrackers = async () => {
-            const response = await fetch('http://localhost:3005/api/trackers')
+            const response = await fetch(process.env.REACT_APP_TRACKER_API_URL)
             const json = await response.json()
 
             if (response.ok) {

@@ -15,7 +15,7 @@ const TrackerForm = () => {
 
         const tracker = {weight, date}
 
-        const response = await fetch('http://localhost:3005/api/trackers', {
+        const response = await fetch(process.env.REACT_APP_TRACKER_API_URL, {
             method: 'POST',
             body: JSON.stringify(tracker),
             headers: {

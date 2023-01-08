@@ -8,7 +8,7 @@ function TrackersTable() {
 
     useEffect(() => {
         //Make an HTTP request to the server to get data
-        fetch('http://localhost:3005/api/trackers')
+        fetch(process.env.REACT_APP_TRACKER_API_URL)
             .then((response) => response.json())
             .then((data) => {
                 setData(data);

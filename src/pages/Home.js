@@ -6,7 +6,7 @@ import TrackerDetails from '../components/TrackerDetails'
 import TrackerForm from '../components/TrackerForm'
 import TrackersTable from '../components/TrackersTable'
 // import TrackersChart from '../components/TrackersChart'
-import Chart from '../components/Chart'
+// import Chart from '../components/Chart'
 import Footer from '../components/Footer'
 
 const Home = () => {
@@ -29,7 +29,7 @@ const Home = () => {
     return (
         <div className="home">
             <h2>Home</h2>
-            <Chart />
+            {/* <Chart /> */}
             {/* <h2 className="page-title">Bodyweight Tracker</h2> */}
             {/* <TrackersChart /> */}
             <section className="tracker-container">

@@ -9,7 +9,7 @@ const TrackerDetails = ({tracker}) => {
     const { dispatch } = useTrackersContext()
 
     // Delete Button
-    const handleClick = async () => {
+    const handleDelete = async () => {
         const response = await fetch(process.env.REACT_APP_TRACKER_API_URL + tracker._id, {
             method: 'DELETE'
         })
@@ -21,16 +21,16 @@ const TrackerDetails = ({tracker}) => {
     }
 
     // Update Button
-    // const handleUpdate = async () => {
-    //     const response = await fetch(process.env.REACT_APP_TRACKER_API_URL + tracker._id, {
-    //         method: 'PATCH'
-    //     })
-    //     const json = await response.json()
+    const handleUpdate = async () => {
+        const response = await fetch(process.env.REACT_APP_TRACKER_API_URL + tracker._id, {
+            method: 'PATCH'
+        })
+        const json = await response.json()
 
-    //     if (response.ok) {
-    //         dispatch({type: 'UPDATE_TRACKER', payload: json})
-    //     }
-    // }
+        if (response.ok) {
+            dispatch({type: 'UPDATE_TRACKER', payload: json})
+        }
+    }
 
     return (
         <div className="tracker-details">
@@ -41,7 +41,7 @@ const TrackerDetails = ({tracker}) => {
             <p className="tracker-id"><strong>ID:</strong> {tracker._id}</p>
             <section className="tracker-modify">
                 <span className="material-symbols-outlined edit" onClick={handleUpdate}>edit</span>
-                <span className="material-symbols-outlined delete" onClick={handleClick}>delete</span>
+                <span className="material-symbols-outlined delete" onClick={handleDelete}>delete</span>
             </section>
         </div>
     )

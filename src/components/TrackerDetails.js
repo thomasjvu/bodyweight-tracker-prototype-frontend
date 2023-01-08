@@ -21,16 +21,16 @@ const TrackerDetails = ({tracker}) => {
     }
 
     // Update Button
-    const handleUpdate = async () => {
-        const response = await fetch(process.env.REACT_APP_TRACKER_API_URL + tracker._id, {
-            method: 'PATCH'
-        })
-        const json = await response.json()
+    // const handleUpdate = async () => {
+    //     const response = await fetch(process.env.REACT_APP_TRACKER_API_URL + tracker._id, {
+    //         method: 'PATCH'
+    //     })
+    //     const json = await response.json()
 
-        if (response.ok) {
-            dispatch({type: 'UPDATE_TRACKER', payload: json})
-        }
-    }
+    //     if (response.ok) {
+    //         dispatch({type: 'UPDATE_TRACKER', payload: json})
+    //     }
+    // }
 
     return (
         <div className="tracker-details">

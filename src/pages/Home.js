@@ -4,6 +4,8 @@ import { useTrackersContext } from '../hooks/useTrackersContext'
 // components
 import TrackerDetails from '../components/TrackerDetails'
 import TrackerForm from '../components/TrackerForm'
+import UpdateTrackerForm from '../components/UpdateTrackerForm'
+// import EditItem from '../components/EditItem'
 import TrackersTable from '../components/TrackersTable'
 import Footer from '../components/Footer'
 
@@ -38,6 +40,9 @@ const Home = () => {
                 </div>
                 <div className="trackers-form">
                     <TrackerForm />
+                    <div className="divider"></div>
+                    {/* <EditItem /> */}
+                    <UpdateTrackerForm />
                 </div>
             </section>
             <section className="tracker-table">

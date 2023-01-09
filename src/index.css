@@ -198,3 +198,13 @@ footer p {
     display: block;
     margin: 10px 0;
 }
+
+/**
+ * Miscellaneous
+ */
+
+.divider {
+    margin: 20px 0;
+    border-bottom: 5px solid black;
+    border-radius: 5px;
+}

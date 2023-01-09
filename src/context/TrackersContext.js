@@ -17,6 +17,10 @@ export const trackersReducer = (state, action) => {
             return {
                 trackers: state.trackers.filter((tracker) => tracker._id !== action.payload._id )
             }
+        case 'UPDATE_TRACKER':
+            return {
+                trackers: state.trackers.filter((tracker) => tracker._id === action.payload._id )
+            }
         default:
             return state
     }

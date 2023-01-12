@@ -1,11 +1,16 @@
+// context
 import { useTrackersContext } from '../hooks/useTrackersContext';
+
+// buttons
+import EditButton from '../components/EditButton'
+import DeleteButton from '../components/DeleteButton'
 
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import format from 'date-fns/format';
-import parse from 'date-fns/parse';
 
 const TrackerDetails = ({ tracker }) => {
+    console.log('trackerdetails', tracker)
     const { dispatch } = useTrackersContext();
 
     // Delete Button
@@ -31,12 +36,18 @@ const TrackerDetails = ({ tracker }) => {
                 method: 'PATCH',
             }
         );
+        console.log('response', response)
         const json = await response.json();
+        console.log('json', json)
 
         if (response.ok) {
             dispatch({ type: 'UPDATE_TRACKER', payload: json });
         }
     };
+
+    // const date = {tracker.date}
+    console.log('tracker', tracker)
+    console.log('tracker date', tracker.date)
 
     // Date format
     function formatTheDate(date) {
@@ -44,6 +55,7 @@ const TrackerDetails = ({ tracker }) => {
         return format(new Date(year, month - 1, day), 'MMMM Do, yyyy');
     }
 
+    // console.log('tracker', tracker)
     return (
         <div className="tracker-details">
             <p className="tracker-weight">
@@ -64,6 +76,8 @@ const TrackerDetails = ({ tracker }) => {
                 <strong>ID:</strong> {tracker._id}
             </p>
             <section className="tracker-modify">
+                <EditButton />
+                <DeleteButton tracker={tracker._id}/>
                 <span
                     className="material-symbols-outlined edit"
                     onClick={handleUpdate}

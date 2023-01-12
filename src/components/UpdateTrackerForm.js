@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useTrackersContext } from '../hooks/useTrackersContext' 
 
-const UpdateTrackerForm = () => {
+const UpdateTrackerForm = ( {tracker} ) => {
 
 
     const { dispatch } = useTrackersContext()
@@ -10,12 +10,12 @@ const UpdateTrackerForm = () => {
     const [weight, setWeight] = useState('')
     const [date, setDate] = useState('')
     const [error, setError] = useState(null)
-    const [emptyFields, setEmptyFields] = useState([])
+    // const [emptyFields, setEmptyFields] = useState([])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const tracker = {weight, date}
+        const tracker = {id}
 
         const response = await fetch(process.env.REACT_APP_TRACKER_API_URL + tracker._id, {
             method: 'PATCH',
@@ -28,13 +28,13 @@ const UpdateTrackerForm = () => {
 
         if (!response.ok) {
             setError(json.error)
-            setEmptyFields(json.emptyFields)
+            // setEmptyFields(json.emptyFields)
         }
         if (response.ok) {
             setWeight('')
             setDate('')
             setError(null)
-            setEmptyFields([])
+            // setEmptyFields([])
             // console.log('existing bodyweight updated', json)
             dispatch({type: 'UPDATE_TRACKER', payload: json})
         }
@@ -49,7 +49,7 @@ const UpdateTrackerForm = () => {
                 type="text"
                 onChange={(e) => setId(e.target.value)}
                 value={id}
-                className={emptyFields.includes('._id') ? 'error' : ''}
+                // className={emptyFields.includes('._id') ? 'error' : ''}
             />
 
             <label>Weight:</label>
@@ -57,7 +57,7 @@ const UpdateTrackerForm = () => {
                 type="number"
                 onChange={(e) => setWeight(e.target.value)}
                 value={weight}
-                className={emptyFields.includes('weight') ? 'error' : ''}
+                // className={emptyFields.includes('weight') ? 'error' : ''}
             />
 
             <label>Date:</label>
@@ -65,7 +65,7 @@ const UpdateTrackerForm = () => {
                 type="date"
                 onChange={(e) => setDate(e.target.value)}
                 value={date}
-                className={emptyFields.includes('date') ? 'error' : ''}
+                // className={emptyFields.includes('date') ? 'error' : ''}
             />
 
             <button>Update Bodyweight</button>

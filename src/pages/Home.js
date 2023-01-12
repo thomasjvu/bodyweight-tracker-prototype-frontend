@@ -5,7 +5,7 @@ import { useTrackersContext } from '../hooks/useTrackersContext'
 import TrackerDetails from '../components/TrackerDetails'
 import TrackerForm from '../components/TrackerForm'
 import UpdateTrackerForm from '../components/UpdateTrackerForm'
-// import EditItem from '../components/EditItem'
+import EditItem from '../components/EditItem'
 import TrackersTable from '../components/TrackersTable'
 import Footer from '../components/Footer'
 
@@ -34,14 +34,17 @@ const Home = () => {
             {/* <TrackersChart /> */}
             <section className="tracker-container">
                 <div className="trackers">
-                    {trackers && trackers.map((tracker) => (
-                        <TrackerDetails key={tracker._id} tracker={tracker} />
-                    ))}
+                    {trackers && trackers.map((tracker) => {
+                        console.log('hometracker', tracker) 
+                        return (
+                            <TrackerDetails key={tracker._id} tracker={tracker} />
+                        )
+                    })
+                    }
                 </div>
                 <div className="trackers-form">
                     <TrackerForm />
                     <div className="divider"></div>
-                    {/* <EditItem /> */}
                     <UpdateTrackerForm />
                 </div>
             </section>

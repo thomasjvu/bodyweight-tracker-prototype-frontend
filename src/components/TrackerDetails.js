@@ -1,6 +1,3 @@
-// context
-import { useTrackersContext } from "../hooks/useTrackersContext";
-
 // buttons
 import UpdateButton from "../components/UpdateButton";
 import DeleteButton from "../components/DeleteButton";
@@ -10,8 +7,8 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import format from "date-fns/format";
 
 const TrackerDetails = ({ tracker }) => {
-    console.log("trackerdetails", tracker);
-    const { dispatch } = useTrackersContext();
+
+    console.log('trackerdetails', tracker)
 
     // Date format
     function formatTheDate(date) {

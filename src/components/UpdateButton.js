@@ -12,9 +12,9 @@ const UpdateButton = ({tracker}) => {
     let navigate = useNavigate()
 
     // Edit Navigation
-    const handleUpdateNav = () => {
-       navigate('UpdateTracker')
-    }
+    // const handleUpdateNav = () => {
+    //    navigate('UpdateTracker')
+    // }
 
     // Handle Update
     const handleUpdate = async () => {

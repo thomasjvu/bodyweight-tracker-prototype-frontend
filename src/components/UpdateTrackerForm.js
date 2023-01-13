@@ -1,8 +1,10 @@
 import { useState } from "react"
 import { useTrackersContext } from '../hooks/useTrackersContext' 
 
-const UpdateTrackerForm = ( {tracker} ) => {
+const UpdateTrackerForm = () => {
 
+    // Get tracker details
+    // console.log('updateTrackerForm', tracker)
 
     const { dispatch } = useTrackersContext()
 
@@ -15,9 +17,11 @@ const UpdateTrackerForm = ( {tracker} ) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const tracker = {id}
+        const tracker = {id, weight, date}
 
-        const response = await fetch(process.env.REACT_APP_TRACKER_API_URL + tracker._id, {
+        console.log(tracker)
+
+        const response = await fetch(process.env.REACT_APP_TRACKER_API_URL + tracker.id, {
             method: 'PATCH',
             body: JSON.stringify(tracker),
             headers: {
@@ -31,6 +35,7 @@ const UpdateTrackerForm = ( {tracker} ) => {
             // setEmptyFields(json.emptyFields)
         }
         if (response.ok) {
+            setId('')
             setWeight('')
             setDate('')
             setError(null)

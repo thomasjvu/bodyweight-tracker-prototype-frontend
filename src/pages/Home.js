@@ -7,6 +7,7 @@ import TrackerForm from '../components/TrackerForm'
 import UpdateTrackerForm from '../components/UpdateTrackerForm'
 import EditItem from '../components/EditItem'
 import TrackersTable from '../components/TrackersTable'
+import TrackersChart from '../components/TrackersChart'
 import Footer from '../components/Footer'
 
 const Home = () => {
@@ -29,9 +30,8 @@ const Home = () => {
     return (
         <div className="home">
             <h2>Home</h2>
-            {/* <Chart /> */}
             {/* <h2 className="page-title">Bodyweight Tracker</h2> */}
-            {/* <TrackersChart /> */}
+             <TrackersChart height={'600px'} width={'100%'} chartId={'63ba8344-9f2b-45b1-8f85-426771d50f8b'} /> 
             <section className="tracker-container">
                 <div className="trackers">
                     {trackers && trackers.map((tracker) => {
@@ -42,7 +42,7 @@ const Home = () => {
                     })
                     }
                 </div>
-                <div className="trackers-form">
+                <div className="trackers-forms">
                     <TrackerForm />
                     <div className="divider"></div>
                     <UpdateTrackerForm />

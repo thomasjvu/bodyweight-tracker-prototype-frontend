@@ -32,8 +32,8 @@ const TrackerDetails = ({ tracker }) => {
                 })}
             </p>
             <p className="tracker-updated">
-                <strong>Created: </strong>{" "}
-                {formatDistanceToNow(new Date(tracker.createdAt), {
+                <strong>Updated: </strong>{" "}
+                {formatDistanceToNow(new Date(tracker.updatedAt), {
                     addSuffix: true,
                 })}
             </p>

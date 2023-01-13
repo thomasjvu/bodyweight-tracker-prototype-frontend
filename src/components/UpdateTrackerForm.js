@@ -12,7 +12,7 @@ const UpdateTrackerForm = () => {
     const [weight, setWeight] = useState('')
     const [date, setDate] = useState('')
     const [error, setError] = useState(null)
-    // const [emptyFields, setEmptyFields] = useState([])
+    const [emptyFields, setEmptyFields] = useState([])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -32,14 +32,14 @@ const UpdateTrackerForm = () => {
 
         if (!response.ok) {
             setError(json.error)
-            // setEmptyFields(json.emptyFields)
+            setEmptyFields(json.emptyFields)
         }
         if (response.ok) {
             setId('')
             setWeight('')
-            setDate('')
+            setDate(tracker.date)
             setError(null)
-            // setEmptyFields([])
+            setEmptyFields([])
             // console.log('existing bodyweight updated', json)
             dispatch({type: 'UPDATE_TRACKER', payload: json})
         }
@@ -54,23 +54,26 @@ const UpdateTrackerForm = () => {
                 type="text"
                 onChange={(e) => setId(e.target.value)}
                 value={id}
+                required 
                 // className={emptyFields.includes('._id') ? 'error' : ''}
             />
 
-            <label>Weight:</label>
+            <label>New Weight:</label>
             <input 
                 type="number"
                 onChange={(e) => setWeight(e.target.value)}
                 value={weight}
+                required
                 // className={emptyFields.includes('weight') ? 'error' : ''}
             />
 
-            <label>Date:</label>
+            <label>New Date:</label>
             <input 
                 type="date"
                 onChange={(e) => setDate(e.target.value)}
-                value={date}
+                // value={date}
                 // className={emptyFields.includes('date') ? 'error' : ''}
+                required
             />
 
             <button>Update Bodyweight</button>

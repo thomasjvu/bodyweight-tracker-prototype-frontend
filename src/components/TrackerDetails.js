@@ -13,7 +13,7 @@ const TrackerDetails = ({ tracker }) => {
     // Date format
     function formatTheDate(date) {
         const [year, month, day] = date.substr(0, 10).split("-");
-        return format(new Date(year, month - 1, day), "MMMM Do, yyyy");
+        return format(new Date(year, month - 1, day), "MMMM dd, yyyy");
     }
 
     // console.log('tracker', tracker)
@@ -25,8 +25,14 @@ const TrackerDetails = ({ tracker }) => {
             <p className="tracker-date">
                 <strong>Date:</strong> {formatTheDate(tracker.date)}
             </p>
+            <p className="tracker-created">
+                <strong>Created: </strong>{" "}
+                {formatDistanceToNow(new Date(tracker.createdAt), {
+                    addSuffix: true,
+                })}
+            </p>
             <p className="tracker-updated">
-                <strong>Updated: </strong>{" "}
+                <strong>Created: </strong>{" "}
                 {formatDistanceToNow(new Date(tracker.createdAt), {
                     addSuffix: true,
                 })}

@@ -1,5 +1,5 @@
 // buttons
-import UpdateButton from "../components/UpdateButton";
+// import UpdateButton from "../components/UpdateButton";
 import DeleteButton from "../components/DeleteButton";
 
 // date fns
@@ -42,7 +42,7 @@ const TrackerDetails = ({ tracker }) => {
                 <strong>ID:</strong> {tracker._id}
             </p>
             <section className="tracker-modify">
-                <UpdateButton tracker={tracker} />
+            {/* <UpdateButton tracker={tracker} />*/}
                 <DeleteButton tracker={tracker} />
             </section>
         </div>

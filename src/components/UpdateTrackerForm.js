@@ -12,7 +12,7 @@ const UpdateTrackerForm = () => {
     const [weight, setWeight] = useState('')
     const [date, setDate] = useState('')
     const [error, setError] = useState(null)
-    const [emptyFields, setEmptyFields] = useState([])
+    // const [emptyFields, setEmptyFields] = useState([])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -32,16 +32,17 @@ const UpdateTrackerForm = () => {
 
         if (!response.ok) {
             setError(json.error)
-            setEmptyFields(json.emptyFields)
+            // setEmptyFields(json.emptyFields)
         }
         if (response.ok) {
             setId('')
             setWeight('')
             setDate(tracker.date)
             setError(null)
-            setEmptyFields([])
+            // setEmptyFields([])
             // console.log('existing bodyweight updated', json)
             dispatch({type: 'UPDATE_TRACKER', payload: json})
+            window.location.reload()
         }
     }
 

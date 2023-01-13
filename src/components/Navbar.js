@@ -4,7 +4,7 @@ const Navbar = () => {
     return (
         <header>
             <div className="container">
-                <Link to="/"># Bodyweight Tracker</Link>
+                <Link to="/" onClick="window.location.reload()"># Bodyweight Tracker</Link>
             </div>
         </header>
     )

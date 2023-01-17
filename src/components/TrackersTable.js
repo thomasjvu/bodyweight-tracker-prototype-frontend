@@ -6,6 +6,12 @@ function TrackersTable() {
     const [data, setData] = useState([]);
     const { trackers } = useTrackersContext();
 
+    // Date format
+    function formatTheDate(date) {
+        const [year, month, day] = date.substr(0, 10).split("-");
+        return format(new Date(year, month - 1, day), "MMMM dd, yyyy");
+    }
+
     useEffect(() => {
         //Make an HTTP request to the server to get data
         fetch(process.env.REACT_APP_TRACKER_API_URL)
@@ -31,7 +37,7 @@ function TrackersTable() {
                             <td className="table-tracker-id">{tracker._id}</td>
                             <td>{tracker.weight}</td>
                             <td>
-                                {format(new Date(tracker.date), 'MM/dd/yyyy')}
+                                {formatTheDate((tracker.date))}
                             </td>
                         </tr>
                     ))}

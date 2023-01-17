@@ -1,8 +1,10 @@
 import { useState } from "react"
 import { useTrackersContext } from '../hooks/useTrackersContext' 
 
-const UpdateTrackerForm = ( {tracker} ) => {
+const UpdateTrackerForm = () => {
 
+    // Get tracker details
+    // console.log('updateTrackerForm', tracker)
 
     const { dispatch } = useTrackersContext()
 
@@ -15,9 +17,11 @@ const UpdateTrackerForm = ( {tracker} ) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const tracker = {id}
+        const tracker = {id, weight, date}
 
-        const response = await fetch(process.env.REACT_APP_TRACKER_API_URL + tracker._id, {
+        console.log(tracker)
+
+        const response = await fetch(process.env.REACT_APP_TRACKER_API_URL + tracker.id, {
             method: 'PATCH',
             body: JSON.stringify(tracker),
             headers: {
@@ -33,11 +37,12 @@ const UpdateTrackerForm = ( {tracker} ) => {
         if (response.ok) {
             setId('')
             setWeight('')
-            setDate('')
+            setDate(tracker.date)
             setError(null)
             // setEmptyFields([])
             // console.log('existing bodyweight updated', json)
             dispatch({type: 'UPDATE_TRACKER', payload: json})
+            window.location.reload()
         }
     }
 
@@ -50,23 +55,26 @@ const UpdateTrackerForm = ( {tracker} ) => {
                 type="text"
                 onChange={(e) => setId(e.target.value)}
                 value={id}
+                required 
                 // className={emptyFields.includes('._id') ? 'error' : ''}
             />
 
-            <label>Weight:</label>
+            <label>New Weight:</label>
             <input 
                 type="number"
                 onChange={(e) => setWeight(e.target.value)}
                 value={weight}
+                required
                 // className={emptyFields.includes('weight') ? 'error' : ''}
             />
 
-            <label>Date:</label>
+            <label>New Date:</label>
             <input 
                 type="date"
                 onChange={(e) => setDate(e.target.value)}
-                value={date}
+                // value={date}
                 // className={emptyFields.includes('date') ? 'error' : ''}
+                required
             />
 
             <button>Update Bodyweight</button>

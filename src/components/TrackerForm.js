@@ -54,7 +54,6 @@ const TrackerForm = () => {
             <input 
                 type="date"
                 onChange={(e) => setDate(e.target.value)}
-                value={date}
                 className={emptyFields.includes('date') ? 'error' : ''}
             />
 

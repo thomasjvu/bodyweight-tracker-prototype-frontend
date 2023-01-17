@@ -1,42 +1,23 @@
-import { useState, useEffect } from 'react';
-import { useTrackersContext } from '../hooks/useTrackersContext' 
-import format from 'date-fns/format'
+import React, {useEffect, useRef, useState} from 'react';
+import ChartsEmbedSDK from "@mongodb-js/charts-embed-dom";
 
-function TrackersChart() {
-    const [data, setData] = useState([]);
-    const {trackers} = useTrackersContext()
+const TrackersChart = ({filter, chartId, height, width}) => {
+  const sdk = new ChartsEmbedSDK({baseUrl: 'https://charts.mongodb.com/charts-bodyweight-tracker-protot-qqbqg'});
+  const chartDiv = useRef(null);
+  const [rendered, setRendered] = useState(false);
+  const [chart] = useState(sdk.createChart({chartId: chartId, height: height, width: width, theme: "light", showAttribution: false, autoRefresh: true, maxDataAge: 10 }));
 
-    useEffect(() => {
-        //Make an HTTP request to the server to get data
-        fetch(process.env.REACT_APP_TRACKER_API_URL)
-            .then(response => response.json())
-            .then(data => {
-                setData(data)
-            })
+  useEffect(() => {
+    chart.render(chartDiv.current).then(() => setRendered(true)).catch(err => console.log("Error during Charts rendering.", err));
+  }, [chart]);
 
+  useEffect(() => {
+    if (rendered) {
+      chart.setFilter(filter).catch(err => console.log("Error while filtering.", err));
+    }
+  }, [chart, filter, rendered]);
 
-    }, [trackers])
-            
-    return (
-        <table className="trackers-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Weight</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                {data.map((tracker) => (
-                    <tr key={tracker._id}>
-                        <td className="table-tracker-id">{tracker._id}</td>
-                        <td>{tracker.weight}</td>
-                        <td>{format(new Date(tracker.date), 'MM/dd/yyyy')}</td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
-    );
-}
+  return <div className="chart" ref={chartDiv}/>;
+};
 
 export default TrackersChart;

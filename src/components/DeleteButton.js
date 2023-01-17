@@ -1,11 +1,12 @@
 // import context
 import { useTrackersContext } from '../hooks/useTrackersContext';
 
-
-
 // Delete Button
 const DeleteButton = ({ tracker }) => {
+
     // Get Tracker Details
+    // console.log('deleteTrackerDetails', tracker._id)
+
     const { dispatch } = useTrackersContext();
 
     // Handle Deletion

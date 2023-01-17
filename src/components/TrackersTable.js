@@ -15,6 +15,12 @@ function TrackersTable() {
             });
     }, [trackers]);
 
+    // Date format
+    function formatTheDate(date) {
+        const [year, month, day] = date.substr(0, 10).split('-');
+        return format(new Date(year, month - 1, day), 'MMMM Do, yyyy');
+    }
+
     return (
         <div>
             <table className="trackers-table">
@@ -31,7 +37,7 @@ function TrackersTable() {
                             <td className="table-tracker-id">{tracker._id}</td>
                             <td>{tracker.weight}</td>
                             <td>
-                                {format(new Date(tracker.date), 'MM/dd/yyyy')}
+                                {formatTheDate(new Date(tracker.date))}
                             </td>
                         </tr>
                     ))}

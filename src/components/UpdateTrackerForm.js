@@ -31,6 +31,7 @@ const UpdateTrackerForm = ( {tracker} ) => {
             // setEmptyFields(json.emptyFields)
         }
         if (response.ok) {
+            setId('')
             setWeight('')
             setDate('')
             setError(null)
